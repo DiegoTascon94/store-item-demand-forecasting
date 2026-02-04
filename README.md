@@ -1,63 +1,60 @@
-# Store & Item Demand Forecasting
+# 📈 Predicción de Demanda: Optimización de Inventarios en Retail
 
-## 📌 Contexto del negocio
-En entornos de retail y consumo masivo, una predicción inexacta de la demanda puede generar quiebres de stock, sobreinventario y pérdidas operativas. Este proyecto aborda el problema de **pronosticar la demanda diaria por tienda y producto**, con el objetivo de apoyar decisiones de planeación, abastecimiento y optimización operativa.
+## 🎯 Contexto del Negocio
+En el sector de consumo masivo, una predicción inexacta de la demanda genera costos ocultos masivos: quiebres de stock que resultan en ventas perdidas y sobreinventario que inmoviliza capital. Este proyecto aborda el desafío de **pronosticar la demanda diaria para 50 productos en 10 tiendas distintas**, permitiendo una planificación logística de precisión.
 
+## 🚀 Objetivo del Proyecto
+Desarrollar un modelo de Machine Learning capaz de anticipar el comportamiento de ventas a nivel tienda–producto para:
+- Optimizar los ciclos de reabastecimiento.
+- Reducir la incertidumbre operativa en la cadena de suministro.
+- Maximizar la disponibilidad de producto en anaquel.
 
-## 🎯 Objetivo del proyecto
-Desarrollar un modelo de predicción de demanda confiable y estable que permita:
-- Anticipar el comportamiento de ventas a nivel tienda–producto.
-- Reducir la incertidumbre en la planificación de inventarios.
-- Facilitar decisiones de negocio basadas en datos históricos y patrones temporales.
+## 📊 Alcance del Análisis
+* **Datos:** 5 años de registros históricos de transacciones diarias.
+* **Feature Engineering:** Creación de variables temporales (día de la semana, mes, año), rezagos (lags) y promedios móviles para capturar la estacionalidad.
+* **Granularidad:** Análisis detallado por SKU y ubicación geográfica.
 
+## 💡 Principales Insights (EDA)
+* **Patrón de Pareto:** Alta concentración del volumen de ventas en un grupo selecto de tiendas y productos críticos.
+* **Estabilidad Semanal:** La demanda no presenta sesgos extremos en fines de semana, lo que facilita una logística de reposición lineal.
+* **Variabilidad por Categoría:** Se identificaron SKUs con alta volatilidad que requieren un "stock de seguridad" mayor que el promedio.
 
-## 📊 Principales insights del análisis
-- La demanda presenta una **alta concentración en pocas tiendas y productos**, confirmando un patrón tipo Pareto.
-- Existen productos con **alta variabilidad**, lo que requiere estrategias diferenciadas de reposición.
-- La demanda se mantiene **estable a lo largo de la semana**, sin sesgos significativos en fines de semana.
-- El error del modelo se mantiene bajo incluso en periodos de mayor volumen de ventas.
+## 🛠️ Enfoque Analítico y Modelo
+Se implementó un modelo de **Random Forest Regressor**, seleccionado por su capacidad para manejar relaciones no lineales y su robustez ante valores atípicos.
+* **Métricas de Rendimiento:**
+  - **MAE (Error Medio Absoluto):** 6.26 unidades (Precisión excepcional frente a una media de 52).
+  - **RMSE:** 8.15 unidades.
+  - **Error Relativo:** ≈12%.
+  - **Confiabilidad:** El 95% de las predicciones tienen una desviación menor a 16.5 unidades.
 
+## 🧠 Impacto en Decisiones de Negocio
+* **Planificación Proactiva:** El modelo permite pasar de una logística reactiva a una basada en demanda esperada.
+* **Reducción de Costos:** Minimización de costos de almacenamiento por exceso de stock.
+* **Soporte Comercial:** Herramienta clave para los equipos de compras y planificación de la demanda (Demand Planning).
 
-## 🤖 Modelo y métricas
-Se entrenó un modelo de **Random Forest Regressor** utilizando variables temporales, rezagos y promedios móviles.
+## 💻 Tecnologías y Herramientas
+* **Lenguaje:** Python
+* **ML Stack:** Scikit-learn, Pandas, NumPy.
+* **Visualización:** Matplotlib, Seaborn.
 
-**Resultados principales:**
-- Demanda diaria promedio: **52.25 unidades**
-- MAE (Error promedio): **6.26 unidades**
-- RMSE: **8.15 unidades**
-- Error relativo estimado: **≈12%**
-
-El 95% de las predicciones se mantiene por debajo de una desviación de 16.5 unidades, evidenciando un desempeño consistente y confiable.
-
-
-## 📈 Impacto en decisiones de negocio
-A partir del análisis y el modelo desarrollado, este proyecto permite:
-- Ajustar inventarios de forma proactiva según la demanda esperada.
-- Identificar productos críticos que requieren mayor control operativo.
-- Reducir costos asociados a sobrestock y quiebres de inventario.
-- Brindar soporte analítico a equipos de operaciones, supply chain y planificación comercial.
-
-
-## 🛠️ Tecnologías utilizadas
-- Python
-- Pandas & NumPy
-- Matplotlib
-- Scikit-learn
-- Jupyter Notebook
-
-
-## 📂 Estructura del repositorio
-```
-store-item-demand-forecasting/
-│
-├── data/               # Datos de entrada (Kaggle)
-├── notebooks/          # Análisis y modelado
-├── src/                # Funciones auxiliares (opcional)
-├── README.md           # Documentación del proyecto
-├── requirements.txt    # Librerías utilizadas
-└── .gitignore
+## 📂 Estructura del Repositorio
+```text
+├── data/               # Datasets históricos (Train/Test)
+├── notebook/           # Análisis exploratorio y entrenamiento del modelo
+├── README.md           # Documentación estratégica
+└── requirements.txt    # Dependencias del entorno
 ```
 
-## 🚀 Conclusión
-El proyecto demuestra cómo un enfoque analítico sólido y orientado al negocio puede transformar datos históricos en **insights accionables**, permitiendo mejorar la toma de decisiones y fortalecer la eficiencia operativa en entornos de retail y consumo masivo.
+## ▶️ Cómo Ejecutar el Proyecto
+* **Clonar el repositorio:** git clone [https://github.com/DiegoTascon94/store-item-demand-forecasting.git](https://github.com/DiegoTascon94/store-item-demand-forecasting.git)
 
+* **Instalar dependencias:** pip install -r requirements.txt
+
+* **Explorar el modelo:** Abrir notebook/ para revisar el proceso de entrenamiento y validación.
+
+## 📝 Conclusiones
+Este proyecto demuestra cómo el Machine Learning puede transformar datos históricos en una ventaja competitiva, reduciendo el error humano en la previsión y asegurando que el producto correcto esté en el lugar correcto en el momento adecuado.
+
+## 🔮 Próximos Pasos / Mejoras Futuras
+* **Modelos Avanzados:** Implementar algoritmos de Gradient Boosting (XGBoost o LightGBM) para mejorar la captura de tendencias a largo plazo y estacionalidades complejas.
+* **Incorporación de Exógenos:** Integrar datos de feriados, eventos climáticos y promociones para refinar la precisión en fechas especiales.
